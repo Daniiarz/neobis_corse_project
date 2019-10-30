@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 import uuid as uuid_lib
 
 
@@ -15,16 +16,19 @@ class Course(models.Model):
     """Model for Course objects"""
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    category = models.OneToOneField(Category, on_delete=models.CASCADE)
     uuid = models.UUIDField(
         db_index=True,
         default=uuid_lib.uuid4(),
         editable=False
     )
     logo = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="courses")
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("course-detail", kwargs={"slug": self.uuid})
 
 
 class Branch(models.Model):
@@ -32,7 +36,7 @@ class Branch(models.Model):
     latitude = models.CharField(max_length=255)
     longitude = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="branches")
 
     def __str__(self):
         return self.address
@@ -50,7 +54,7 @@ class Contact(models.Model):
     )
     contact_type = models.IntegerField(choices=CONTACT_CHOICES)
     value = models.CharField(max_length=255)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="contacts")
 
     def __str__(self):
         return self.value

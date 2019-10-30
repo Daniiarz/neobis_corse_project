@@ -17,11 +17,11 @@ class BranchSerializer(serializers.ModelSerializer):
     """Serializer for Branch objects, used as a link to Category serializer"""
 
     class Meta:
-        model = Category
+        model = Branch
         fields = (
             "latitude",
             "longitude",
-            "value",
+            "address",
         )
 
 
@@ -38,19 +38,17 @@ class ContactSerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
     """Serializer for Course objects, main serializer in this project required to serialize multiple relations"""
-    contacts = serializers.PrimaryKeyRelatedField(
-        queryset=Contact.objects.all()
+    contacts = ContactSerializer(
+        many=True,
     )
-    branches = serializers.PrimaryKeyRelatedField(
-        queryset=Branch.objects.all()
-    )
-    category = serializers.PrimaryKeyRelatedField(
-        queryset=Category.objects.all()
+    branches = BranchSerializer(
+        many=True,
     )
 
     class Meta:
         model = Course
         fields = (
+            "url",
             "name",
             "description",
             "category",
@@ -59,3 +57,16 @@ class CourseSerializer(serializers.ModelSerializer):
             "contacts",
             "branches",
         )
+
+    def create(self, validated_data):
+        branches_data = validated_data.pop("branches")
+        contacts_data = validated_data.pop("contacts")
+        course = Course.objects.create(**validated_data)
+
+        for branch_data in branches_data:
+            Branch.objects.create(course=course, **branch_data)
+
+        for contact_data in contacts_data:
+            Contact.objects.create(course=course, **contact_data)
+
+        return course
