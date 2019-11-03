@@ -1,0 +1,59 @@
+# Course project
+
+Neobis course project was created as part of our study plan, using django and django rest framework.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+Pipenv package manager is required for creating virtual environment
+```
+pip install pipenv
+```
+
+### Installing
+
+Install all the requirements
+
+```
+pipenv install -r requirements.txt
+```
+
+Run you virtual environment
+```
+pipenv shell
+```
+### Documentation
+
+Documentation was made by swagger and OpenAPI 2.0 and available locally on localhost:8000/ 
+
+## Running the tests
+
+The app is not covered with tests yet, but they are coming soon.
+To run tests use
+
+```
+$python manage.py test 
+```
+
+## Deployment
+
+Project is not ready for deployment
+
+## Built With
+
+* [Django](https://www.djangoproject.com/) - The web framework used
+* [Django REST framework](https://www.django-rest-framework.org/) - The REST framework for django 
+
+
+## Authors
+
+* **Daniiar Mukash uulu**  - [Daniiarz](https://github.com/Daniiarz)
+
+## License
+
+There is no license for this project :(
+
+
