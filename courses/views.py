@@ -6,7 +6,7 @@ from .serializers import CourseSerializer
 class ListCourses(ListCreateAPIView):
     """
         API View for listing and creating course models. UUID field preferred as a
-        lookup_field for security purposes, but i was forced to use id of model as lookup field.
+        lookup_field for security purposes, but id of course model was used.
     """
     model = Course
     queryset = Course.objects.all()
@@ -16,7 +16,8 @@ class ListCourses(ListCreateAPIView):
 
 class DetailCourse(RetrieveDestroyAPIView):
     """
-        API view for getting or deleting course model
+        API view for getting or deleting course model.
+        Deleting Course model causes all related Contact and Branch models to be deleted to
     """
     model = Course
     queryset = Course.objects.all()
