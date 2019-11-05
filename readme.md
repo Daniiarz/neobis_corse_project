@@ -27,7 +27,7 @@ pipenv shell
 ```
 ### Documentation
 
-Documentation was made by swagger and OpenAPI 2.0 and available locally on localhost:8000/ 
+Documentation was made by swagger and OpenAPI 2.0 and available locally on localhost:8000/
 
 ## Running the tests
 

@@ -17,7 +17,7 @@ class ListCourses(ListCreateAPIView):
 class DetailCourse(RetrieveDestroyAPIView):
     """
         API view for getting or deleting course model.
-        Deleting Course model causes all related Contact and Branch models to be deleted to
+        Deleting Course model causes all related Contact and Branch models to be deleted too.
     """
     model = Course
     queryset = Course.objects.all()
