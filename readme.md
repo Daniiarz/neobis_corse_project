@@ -37,6 +37,7 @@ To run tests use
 $python manage.py test 
 ```
 ###Coverage
+
 You also can use coverage to run tests and get report of how much of your code 
 has been covered with tests
 
