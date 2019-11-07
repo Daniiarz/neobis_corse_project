@@ -28,7 +28,7 @@ class Course(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("course-detail", kwargs={"slug": self.uuid})
+        return reverse("course-detail", kwargs={"pk": self.pk})
 
 
 class Branch(models.Model):

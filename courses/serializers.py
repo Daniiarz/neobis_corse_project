@@ -48,7 +48,6 @@ class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = (
-            "url",
             "name",
             "description",
             "category",
@@ -57,6 +56,8 @@ class CourseSerializer(serializers.ModelSerializer):
             "contacts",
             "branches",
         )
+
+        extra_kwargs = {'id': {'read_only': True}}
 
     def create(self, validated_data):
         branches_data = validated_data.pop("branches")

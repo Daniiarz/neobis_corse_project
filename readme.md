@@ -21,7 +21,7 @@ Install all the requirements
 pipenv install -r requirements.txt
 ```
 
-Run you virtual environment
+Run your virtual environment
 ```
 pipenv shell
 ```
@@ -31,13 +31,28 @@ Documentation was made by swagger and OpenAPI 2.0 and available locally on local
 
 ## Running the tests
 
-The app is not covered with tests yet, but they are coming soon.
 To run tests use
 
 ```
 $python manage.py test 
 ```
+###Coverage
+You also can use coverage to run tests and get report of how much of your code 
+has been covered with tests
 
+To run tests with coverage
+```
+$python coverage run manage.py test -v 2
+```
+Get results in terminal
+```
+$python coverage report 
+```
+Get results in a html format. Later you can see your results in browser and get more detailed 
+information about test coverage
+```
+$python coverage html
+```
 ## Deployment
 
 Project is not ready for deployment
