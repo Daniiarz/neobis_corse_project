@@ -6,7 +6,7 @@ install:
    - pip install -r requirements/staging.txt
 
 script:
-  - puthon coverage run manage.py test
+  - python coverage run manage.py test
 
 after_success:
   - codecov
