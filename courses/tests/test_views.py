@@ -24,8 +24,8 @@ class TestCourseViews(TestCase):
             Testing GET method on course/ endpoint
         """
         category = CategoryFactory()
-        course1 = CourseFactory(category=category)
-        course2 = CourseFactory(category=category)
+        CourseFactory(category=category)
+        CourseFactory(category=category)
         response = self.client.get(COURSES_URL)
 
         courses = Course.objects.all()
@@ -38,7 +38,7 @@ class TestCourseViews(TestCase):
         """
             Testing POST method on course/ endpoint
         """
-        category = CategoryFactory()
+        CategoryFactory()
         payload = {
             "name": "English courses",
             "description": fake.paragraph(nb_sentences=3, variable_nb_sentences=True, ext_word_list=None),
@@ -94,4 +94,3 @@ class TestCourseViews(TestCase):
 
         exists = Course.objects.filter(name="Course to be deleted")
         self.assertFalse(exists)
-

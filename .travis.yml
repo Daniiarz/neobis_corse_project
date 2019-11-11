@@ -6,7 +6,7 @@ install:
   - pip install -r requirements/staging.txt
 
 script:
-  - coverage run manage.py test
+  - coverage run manage.py test && flake8
 
 after_success:
   - codecov

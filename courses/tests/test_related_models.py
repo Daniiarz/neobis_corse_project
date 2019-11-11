@@ -26,7 +26,7 @@ class TestRelatedModels(TestCase):
         """
         course = None
         with self.assertRaises(IntegrityError):
-            branch = utils.BranchFactory(course=course)
+            utils.BranchFactory(course=course)
 
     def test_create_contact_model(self):
         """
@@ -43,7 +43,7 @@ class TestRelatedModels(TestCase):
         """
         course = None
         with self.assertRaises(IntegrityError):
-            contact = utils.ContactFactory(course=course)
+            utils.ContactFactory(course=course)
 
     def test_create_category_model(self):
         """

@@ -57,7 +57,7 @@ class TestModels(TestCase):
         category = None
 
         with self.assertRaises(IntegrityError):
-            course = utils.CourseFactory(category=category)
+            utils.CourseFactory(category=category)
 
     def test_get_absolute_url(self):
         """

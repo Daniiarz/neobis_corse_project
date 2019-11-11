@@ -13,7 +13,7 @@ class TestCourseSerializers(TestCase):
         """
             Testing course serializers create() method can accept list of branches and contacts
         """
-        category = CategoryFactory()
+        CategoryFactory()
 
         course_dict = {
             "name": "DJango Course",

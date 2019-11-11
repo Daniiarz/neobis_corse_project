@@ -57,4 +57,3 @@ class ContactFactory(factory.django.DjangoModelFactory):
     contact_type = random.randint(1, 3)
     value = fake.phone_number()
     course = factory.SubFactory(CourseFactory)
-

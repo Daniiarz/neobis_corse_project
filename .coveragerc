@@ -2,3 +2,11 @@
 source=
     courses/
     core/
+    neobis_courses_project/
+
+omit=
+    # omit every thing in every migration folder
+    */.migrations/*
+
+    # omit every thing in every __pycache__ folder
+    */.__pycache__/*
