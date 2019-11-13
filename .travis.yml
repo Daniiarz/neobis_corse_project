@@ -3,6 +3,12 @@ python:
 - '3.6'
 services:
   - postgresql
+addons:
+  postgresql: "11"
+  apt:
+    packages:
+      - postgresql-11
+      - postgresql-client-11
 before_script:
   - psql -c 'create database course_test_db;' -U postgres
 install:
