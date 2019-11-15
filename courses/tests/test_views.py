@@ -18,14 +18,14 @@ class TestCourseViews(TestCase):
 
     def setUp(self) -> None:
         self.client = APIClient()
+        self.category = CategoryFactory(name="Course to be deleted")
 
     def test_get_course_list(self):
         """
             Testing GET method on course/ endpoint
         """
-        category = CategoryFactory()
-        CourseFactory(category=category)
-        CourseFactory(category=category)
+        CourseFactory(category=self.category)
+        CourseFactory(category=self.category)
         response = self.client.get(COURSES_URL)
 
         courses = Course.objects.all()
@@ -38,12 +38,11 @@ class TestCourseViews(TestCase):
         """
             Testing POST method on course/ endpoint
         """
-        CategoryFactory()
         payload = {
             "name": "English courses",
-            "description": fake.paragraph(nb_sentences=3, variable_nb_sentences=True, ext_word_list=None),
+            "description": fake.paragraph(nb_sentences=1, variable_nb_sentences=True, ext_word_list=None),
             "logo": fake.file_path(),
-            "category": 1,
+            "category": self.category.id,
             "branches": [
                 {
                     "longitude": fake.zipcode_plus4(),
@@ -69,8 +68,7 @@ class TestCourseViews(TestCase):
         """
             Testing detail view GET method for course models on courses/{id} endpoint
         """
-        category = CategoryFactory()
-        course = CourseFactory(category=category)
+        course = CourseFactory(category=self.category)
         response = self.client.get(
             course.get_absolute_url()
         )
@@ -84,8 +82,7 @@ class TestCourseViews(TestCase):
         """
             Testing detail view delete method for course models on courses/{id} endpoint
         """
-        category = CategoryFactory(name="Course to be deleted")
-        course = CourseFactory(category=category)
+        course = CourseFactory(category=self.category)
         response = self.client.delete(
             course.get_absolute_url()
         )

@@ -13,13 +13,13 @@ class TestCourseSerializers(TestCase):
         """
             Testing course serializers create() method can accept list of branches and contacts
         """
-        CategoryFactory()
+        category = CategoryFactory()
 
         course_dict = {
             "name": "DJango Course",
-            "description": fake.paragraph(nb_sentences=5, variable_nb_sentences=True, ext_word_list=None),
+            "description": fake.paragraph(nb_sentences=1, variable_nb_sentences=True, ext_word_list=None),
             "logo": fake.file_path(),
-            "category": 1,
+            "category": category.id,
             "branches": [
                 {
                     "longitude": fake.zipcode_plus4(),
@@ -35,4 +35,5 @@ class TestCourseSerializers(TestCase):
             ]
         }
         serializer = serializers.CourseSerializer(data=course_dict)
-        self.assertTrue(serializer.is_valid())
+        valid = serializer.is_valid()
+        self.assertTrue(valid)

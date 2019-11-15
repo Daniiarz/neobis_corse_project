@@ -8,19 +8,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", cast=bool, default=True)
+DEBUG = False
 
-SECURE_CONTENT_TYPE_NOSNIFF = True
-
-SECURE_BROWSER_XSS_FILTER = True
-
-SECURE_SSL_REDIRECT = True
-
-SESSION_COOKIE_SECURE = True
-
-CSRF_COOKIE_SECURE = True
-
-X_FRAME_OPTIONS = "DENY"
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 
@@ -83,6 +72,9 @@ DATABASES = {
         "HOST": config("DB_HOST"),
         "PORT": "",
         'ATOMIC_REQUESTS': True,
+    },
+    "TEST": {
+        "CHARSET": "UTF8",
     }
 }
 
