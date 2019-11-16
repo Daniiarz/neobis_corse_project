@@ -35,8 +35,10 @@ class TestModels(TestCase):
         contact1 = utils.ContactFactory(course=course)
         contact2 = utils.ContactFactory(course=course)
 
-        self.assertEqual(course.contacts.all()[0], contact1)
-        self.assertEqual(course.contacts.all()[1], contact2)
+        contacts = course.contacts.all()
+
+        self.assertIn(contact1, contacts)
+        self.assertIn(contact2, contacts)
 
     def test_create_course_with_branches(self):
         """
@@ -47,8 +49,10 @@ class TestModels(TestCase):
         branch1 = utils.BranchFactory(course=course)
         branch2 = utils.BranchFactory(course=course)
 
-        self.assertEqual(course.branches.all()[0], branch1)
-        self.assertEqual(course.branches.all()[1], branch2)
+        branches = course.branches.all()
+
+        self.assertIn(branch1, branches)
+        self.assertIn(branch2, branches)
 
     def test_create_course_without_category(self):
         """

@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", cast=bool, default=True)
+DEBUG = False
 
 # SECURE_CONTENT_TYPE_NOSNIFF = True
 #
@@ -54,8 +54,7 @@ ROOT_URLCONF = 'neobis_courses_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,6 +82,9 @@ DATABASES = {
         "HOST": config("DB_HOST"),
         "PORT": "",
         'ATOMIC_REQUESTS': True,
+    },
+    "TEST": {
+        "CHARSET": "UTF8",
     }
 }
 
