@@ -56,7 +56,9 @@ $python coverage html
 ```
 ## Deployment
 
-Project is not ready for deployment
+Project do not have any web server and proxy server configuration,so you can choose what ever option you want.
+(recomended gunicorn as web server and nginx as reverse proxy because of ease and speed of configuration)
+
 
 ## Built With
 
